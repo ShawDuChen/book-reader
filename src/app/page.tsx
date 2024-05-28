@@ -1,14 +1,13 @@
+import Header from "@/components/header/header";
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <section className=" w-screen h-screen flex flex-col">
-      <section className="header flex flex-row justify-between items-center h-16 px-8 bg-gray-200 border-blue-400 rounded-md border">
-        <section>logo</section>
-        <section>login</section>
-      </section>
+      <Header />
       <section className="content flex flex-row h-full overflow-auto">
-        <aside className="aside w-48 bg-gray-50 p-8">
+        <aside className="aside w-48 p-8">
           <ul className="space-y-1">
             <li className=" text-blue-500 hover:underline cursor-pointer">
               <Link href={"/category/1"}>1</Link>
@@ -39,40 +38,9 @@ export default function HomePage() {
             </li>
           </ul>
         </aside>
-        <main className="main flex-1 bg-gray-200 p-8">
-          <section className="mb-5">
-            <h1>玄幻榜</h1>
-            <ul className="flex flex-row space-x-1">
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-            </ul>
-          </section>
-          <section>
-            <h1>科幻榜</h1>
-            <ul className="flex flex-row space-x-1">
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-              <li>小说xxxx</li>
-            </ul>
-          </section>
-        </main>
+        <main className="main flex-1 p-8"></main>
       </section>
-      <section className="footer flex h-16 px-8 text-center items-center justify-center rounded-md border border-blue-400">
+      <section className="footer flex h-16 px-8 text-center items-center justify-center">
         &copy; copyright content;
       </section>
     </section>
