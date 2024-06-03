@@ -7,3 +7,12 @@ body {
   margin: 0;
   padding: 0;
 }
+@layer base {
+  :root {
+    --main: 216 27% 98%;
+    --primary: 221 50% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 9% 96%;
+    --secondary-foreground: 222 2% 32%;
+  }
+}
