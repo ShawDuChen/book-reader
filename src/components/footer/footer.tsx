@@ -1,14 +1,21 @@
 import { Button, Divider } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import { PhoneCallIcon, MailCheckIcon, MessageCircleIcon } from "lucide-react";
+import {
+  PhoneCallIcon,
+  MailCheckIcon,
+  MessageCircleIcon,
+  ChevronUpSquare,
+} from "lucide-react";
+import { fetchFooterInfo } from "@/libs/fetch-server";
 
-export default function Footer() {
+export default async function Footer() {
+  const footerInfo = await fetchFooterInfo();
   return (
     <section className="fixed w-full bottom-0 bg-secondary p-12">
-      <section className="max-w-[1280px] mx-auto">
+      <section className="max-w-[1440px] mx-auto relative">
         <section className="lg:flex space-y-8 justify-between px-4 lg:space-x-12">
-          <section className="flex flex-col space-y-2 max-w-[360px]">
+          <section className="flex flex-col space-y-2 max-w-[320px]">
             <Link href={"#"}>
               <Image
                 src="/favicon.ico"
@@ -17,56 +24,65 @@ export default function Footer() {
                 height={50}
               />
             </Link>
-            <h2 className="text-lg">关于我们</h2>
-            <p>
-              通过不断的创新以推进AI制药技术的边界，让更多疾病有药可医，让更多生命重获健康。
-            </p>
+            <h2 className="text-lg">{footerInfo.about?.title}</h2>
+            <p>{footerInfo.about?.description}</p>
             <h2 className="text-lg">联系我们</h2>
-            <p className="flex space-x-4">
-              <PhoneCallIcon size={16} className="text-gray-500" />
-              <span>+86 13888888888</span>
-            </p>
-            <p className="flex space-x-4">
-              <MailCheckIcon size={16} className="text-gray-500" />
-              <span>+86 13888888888</span>
-            </p>
+            {footerInfo.contacts.map((item, index) => (
+              <p key={item.id} className="flex space-x-4">
+                {index % 2 === 0 ? (
+                  <PhoneCallIcon size={16} className="text-gray-500" />
+                ) : (
+                  <MailCheckIcon size={16} className="text-gray-500" />
+                )}
+                <span>{item.title}</span>
+              </p>
+            ))}
           </section>
-          <section className="flex flex-row flex-1 justify-between items-start">
-            <section className="space-y-2">
-              <h3 className="font-bold text-gray-900">核心技术</h3>
-              <p>AI新药研发平台</p>
-              <p>公司荣誉</p>
-              <p>原研创新技术</p>
-              <p>技术合作方</p>
-            </section>
-            <section className="space-y-2">
-              <h3 className="font-bold text-gray-900">核心技术</h3>
-              <p>AI新药研发平台</p>
-              <p>公司荣誉</p>
-              <p>原研创新技术</p>
-              <p>技术合作方</p>
-            </section>
-            <section className="space-y-2">
-              <h3 className="font-bold text-gray-900">核心技术</h3>
-              <p>AI新药研发平台</p>
-              <p>公司荣誉</p>
-              <p>原研创新技术</p>
-              <p>技术合作方</p>
-            </section>
+          <section className="block sm:flex flex-row flex-1 justify-between items-start">
+            {footerInfo.news.map((item) => (
+              <section key={item.type} className="space-y-2 mb-2 sm:mb-0">
+                {item.list?.map((item, index) =>
+                  index === 0 ? (
+                    <h3 key={item.id} className="font-bold text-gray-900">
+                      {item.title}
+                    </h3>
+                  ) : (
+                    <p key={item.id}>
+                      <Link href={item.link!} target="_blank">
+                        {item.title}
+                      </Link>
+                    </p>
+                  ),
+                )}
+              </section>
+            ))}
           </section>
           <section className="flex flex-col space-y-4">
             <h2 className="font-bold">订阅药品最新资讯</h2>
-            <Button type="button" variant="flat" color="primary">
-              <MessageCircleIcon />
-              <span>微信公众号 了解药品咨询</span>
-            </Button>
-            <Button type="button" variant="solid" color="primary">
-              订阅数据库
-            </Button>
+            {footerInfo.socials?.map((item, index) => (
+              <Button
+                key={item.id}
+                type="button"
+                variant={index % 2 === 0 ? "flat" : "solid"}
+                color="primary">
+                {index === 0 && <MessageCircleIcon />}
+                <Link href={item.link!} target="_blank">
+                  {item.title}
+                </Link>
+              </Button>
+            ))}
           </section>
         </section>
         <Divider className="my-8" />
         <p className="text-center text-sm">&copy; copyright</p>
+
+        <Button
+          isIconOnly
+          color="primary"
+          type="button"
+          className=" absolute right-0 lg:bottom-20 bottom-0">
+          <ChevronUpSquare />
+        </Button>
       </section>
     </section>
   );
