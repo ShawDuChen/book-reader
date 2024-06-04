@@ -13,7 +13,7 @@ export default async function Footer() {
   const footerInfo = await fetchFooterInfo();
   return (
     <section className="fixed w-full bottom-0 bg-secondary p-12">
-      <section className="max-w-[1440px] mx-auto relative">
+      <section className="container relative">
         <section className="lg:flex space-y-8 justify-between px-4 lg:space-x-12">
           <section className="flex flex-col space-y-2 max-w-[320px]">
             <Link href={"#"}>
