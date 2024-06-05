@@ -25,18 +25,23 @@ export default function Header() {
     },
   ];
 
+  console.log("url:::::::::::", url);
+
   return (
     <div className="sticky top-0 shadow-md">
       <Navbar>
         <NavbarBrand>
           <Image src="/favicon.ico" alt="icon" className="h-12 mr-4" />
-          <p className="font-bold text-inherit">
+          <Link
+            color={url === "/" ? "primary" : "foreground"}
+            href="/"
+            className="font-bold cursor-pointer">
             {process.env.NEXT_WEBSIATE_TITLE}
-          </p>
+          </Link>
         </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarContent className="hidden sm:flex gap-12" justify="center">
           {navItems.map((item) => {
-            const isActive = url ? item.path.startsWith(url) : false;
+            const isActive = url ? url.includes(item.path) : false;
             return (
               <NavbarItem key={item.path} isActive={isActive}>
                 <Link
@@ -50,10 +55,14 @@ export default function Header() {
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
+            <Link href="/auth/login">Login</Link>
           </NavbarItem>
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="solid">
+            <Button
+              as={Link}
+              color="primary"
+              href="/auth/register"
+              variant="solid">
               Sign Up
             </Button>
           </NavbarItem>
