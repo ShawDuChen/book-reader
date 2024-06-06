@@ -24,7 +24,7 @@ export default async function LoginPage() {
             <Checkbox />
             <p>
               登录则遵守{" "}
-              <Link href="/user/agreement" className="text-primary">
+              <Link href="/auth/privacy" className="text-primary">
                 《用户规范》
               </Link>
             </p>
