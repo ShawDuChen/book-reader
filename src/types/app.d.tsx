@@ -24,4 +24,37 @@ declare module "app" {
     socials: FooterInfoItem[];
     news: Array<{ type: SiteFooterSubType; list: FooterInfoItem[] }>;
   }
+
+  interface Category extends CommonStruct {
+    name: string;
+    identify: string;
+  }
+
+  interface Author extends CommonStruct {
+    name: string;
+    sex: string;
+    tel: string;
+    status: number;
+    avatar?: string;
+  }
+
+  interface Book extends CommonStruct {
+    name: string;
+    category_id: number;
+    category?: Category;
+    author_id: number;
+    author?: Author;
+    fetch_url?: string;
+    crawl_rule_id?: number;
+    cover?: string;
+  }
+
+  interface Chapter extends CommonStruct {
+    no: string;
+    title: string;
+    content?: string;
+    book_id?: number;
+    book?: Book;
+    url?: string;
+  }
 }
