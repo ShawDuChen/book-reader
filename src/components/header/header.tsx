@@ -18,11 +18,11 @@ export default function Header() {
     label: string;
   }> = [
     { path: "/category", label: "Category" },
-    { path: "/book", label: "Book" },
     {
       path: "/author",
       label: "Author",
     },
+    { path: "/book", label: "Book" },
   ];
 
   console.log("url:::::::::::", url);

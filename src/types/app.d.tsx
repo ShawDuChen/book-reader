@@ -28,6 +28,7 @@ declare module "app" {
   interface Category extends CommonStruct {
     name: string;
     identify: string;
+    books?: Book[];
   }
 
   interface Author extends CommonStruct {
@@ -36,6 +37,7 @@ declare module "app" {
     tel: string;
     status: number;
     avatar?: string;
+    books?: Book[];
   }
 
   interface Book extends CommonStruct {
@@ -47,6 +49,7 @@ declare module "app" {
     fetch_url?: string;
     crawl_rule_id?: number;
     cover?: string;
+    chapters?: Chapter[];
   }
 
   interface Chapter extends CommonStruct {

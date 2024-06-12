@@ -1,8 +1,8 @@
-import { fetchCategory } from "@/libs/fetch-server";
+import { fetchCategoryHot } from "@/api/category";
 import Link from "next/link";
 
 export default async function CategoryRankingList() {
-  const data = await fetchCategory();
+  const data = await fetchCategoryHot();
 
   return (
     <section>

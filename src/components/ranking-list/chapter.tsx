@@ -1,8 +1,8 @@
-import { fetchChapter } from "@/libs/fetch-server";
+import { fetchChapterHot } from "@/api/chapter";
 import Link from "next/link";
 
 export default async function ChapterRankingList() {
-  const data = await fetchChapter();
+  const data = await fetchChapterHot();
   return (
     <section>
       <h2>章节排行榜</h2>

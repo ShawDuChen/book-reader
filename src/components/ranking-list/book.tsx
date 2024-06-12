@@ -1,8 +1,8 @@
-import { fetchBook } from "@/libs/fetch-server";
+import { fetchBookHot } from "@/api/book";
 import Link from "next/link";
 
 export default async function BookRankingList() {
-  const data = await fetchBook();
+  const data = await fetchBookHot();
 
   return (
     <section>

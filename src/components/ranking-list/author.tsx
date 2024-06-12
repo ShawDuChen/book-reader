@@ -1,8 +1,8 @@
-import { fetchAuthor } from "@/libs/fetch-server";
+import { fetchAuthorHot } from "@/api/author";
 import Link from "next/link";
 
 export default async function AuthorRankingList() {
-  const data = await fetchAuthor();
+  const data = await fetchAuthorHot();
   return (
     <section>
       <h2>作者排行榜</h2>

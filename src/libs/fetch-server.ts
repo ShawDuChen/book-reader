@@ -8,6 +8,7 @@ export const fetchServer = async <T>(url: string): Promise<T> => {
   const res = await fetch(`${process.env.NEXT_API_URL}${url}`, {
     method: "GET",
     headers: headers,
+    cache: "no-cache",
   });
   return res.json();
 };
@@ -33,20 +34,4 @@ export const postServer = async <T, U = null>(
 
 export const fetchFooterInfo = async () => {
   return fetchServer<FooterInfoApiResult>("/api/site_footer/info");
-};
-
-export const fetchCategory = async () => {
-  return fetchServer<Category[] | undefined>("/api/category");
-};
-
-export const fetchAuthor = async () => {
-  return fetchServer<Author[] | undefined>("/api/author");
-};
-
-export const fetchBook = async () => {
-  return fetchServer<Book[] | undefined>("/api/book");
-};
-
-export const fetchChapter = async () => {
-  return fetchServer<Chapter[] | undefined>("/api/chapter");
 };

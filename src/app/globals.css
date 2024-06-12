@@ -22,6 +22,10 @@ body {
   @apply max-w-[1440px] mx-auto;
 }
 
+.main {
+  min-height: calc(100vh - 360px);
+}
+
 .gradient-container {
   @apply min-h-screen bg-gradient-to-b from-white to-blue-100;
 }
