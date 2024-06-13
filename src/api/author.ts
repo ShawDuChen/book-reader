@@ -8,3 +8,7 @@ export const fetchAuthor = async () => {
 export const fetchAuthorHot = async () => {
   return fetchServer<Author[] | undefined>("/api/author/hot");
 };
+
+export const fetchAuthorInfo = async (id: string) => {
+  return fetchServer<Author>(`/api/author/${id}`);
+};

@@ -12,7 +12,7 @@ export default async function ChapterRankingList() {
             <Link
               href={`/book/${item.id}`}
               className="text-primary hover:underline">
-              {item.title}
+              {item.title}《{item.book?.name}》
             </Link>
           </li>
         ))}

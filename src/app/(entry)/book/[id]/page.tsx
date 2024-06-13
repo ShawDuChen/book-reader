@@ -12,9 +12,8 @@ export default async function BookDetailPage({
   return (
     <section>
       <h1 className="text-2xl font-bold text-primary">{book.name}</h1>
-      <h2>Author: {book.author?.name}</h2>
+      <h2>{book.author?.name}</h2>
       <p>
-        Fetch URL:{" "}
         {book.fetch_url ? (
           <Link
             href={book.fetch_url}
@@ -26,7 +25,9 @@ export default async function BookDetailPage({
           "-"
         )}
       </p>
-      {book.cover && <Image src={book.cover} alt={book.name} />}
+      {book.cover && (
+        <Image src={book.cover} alt={book.name} width={50} height={50} />
+      )}
       <ul className="md:flex md:flex-wrap md:gap-y-4">
         {book.chapters?.map((chapter) => (
           <li key={chapter.id} className="w-1/3 text-center">
