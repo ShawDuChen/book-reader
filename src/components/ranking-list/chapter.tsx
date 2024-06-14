@@ -10,9 +10,9 @@ export default async function ChapterRankingList() {
         {data?.map((item) => (
           <li key={item.id}>
             <Link
-              href={`/book/${item.id}`}
+              href={`/book/${item.book_id}/chapter/${item.id}`}
               className="text-primary hover:underline">
-              {item.title}《{item.book?.name}》
+              {item.title}
             </Link>
           </li>
         ))}

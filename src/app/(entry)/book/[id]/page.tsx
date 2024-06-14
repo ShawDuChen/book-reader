@@ -32,7 +32,7 @@ export default async function BookDetailPage({
         {book.chapters?.map((chapter) => (
           <li key={chapter.id} className="w-1/3 text-center">
             <Link
-              href={`/chapter/${chapter.id}`}
+              href={`/book/${book.id}/chapter/${chapter.id}`}
               className="text-primary hover:underline">
               {chapter.title}
             </Link>
