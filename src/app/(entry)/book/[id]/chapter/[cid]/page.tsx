@@ -1,6 +1,7 @@
 import { fetchBookInfo } from "@/api/book";
 import { fetchChapterInfo } from "@/api/chapter";
 import Link from "next/link";
+import ChapterChanger from "./chapter-changer";
 
 export default async function ChapterInfoPage({
   params: { id, cid },
@@ -36,31 +37,11 @@ export default async function ChapterInfoPage({
           ))}
       </pre>
       <hr />
-      <section className="chapter-changer flex justify-between">
-        {chapter?.prev_chapter_id ? (
-          <Link
-            href={`/book/${book.id}/chapter/${chapter?.prev_chapter_id}`}
-            className="text-primary hover:underline w-1/3 text-left">
-            上一章
-          </Link>
-        ) : (
-          <section className="w-1/3" />
-        )}
-        <Link
-          href={`/book/${book.id}`}
-          className="text-primary hover:underline w-1/3 text-center">
-          目录
-        </Link>
-        {chapter?.next_chapter_id ? (
-          <Link
-            href={`/book/${book.id}/chapter/${chapter?.next_chapter_id}`}
-            className="text-primary hover:underline w-1/3 text-right">
-            下一章
-          </Link>
-        ) : (
-          <section className="w-1/3" />
-        )}
-      </section>
+      <ChapterChanger
+        book_id={book.id}
+        prev_chapter_id={chapter?.prev_chapter_id}
+        next_chapter_id={chapter?.next_chapter_id}
+      />
     </section>
   );
 }

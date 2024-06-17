@@ -1,4 +1,5 @@
 declare module "app" {
+  import { HTMLAttributes } from "react";
   interface CommonStruct {
     id: number;
     remark?: string;
@@ -38,6 +39,7 @@ declare module "app" {
     status: number;
     avatar?: string;
     books?: Book[];
+    description?: string;
   }
 
   interface Book extends CommonStruct {
@@ -79,4 +81,9 @@ declare module "app" {
     expired_at: string;
     status: 0 | 1;
   }
+
+  type RankListProps = HTMLAttributes<HTMLDivElement> & {
+    limit?: number;
+    layout?: "vertical" | "horizontal";
+  };
 }

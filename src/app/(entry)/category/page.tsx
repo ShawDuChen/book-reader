@@ -15,7 +15,7 @@ export default async function CategoryPage() {
               {item.name}
             </Link>
           </h1>
-          <ul className="pl-12">
+          <ul className="pl-12 text-center">
             {item.books?.map((book) => (
               <li key={book.id}>
                 <Link
@@ -25,6 +25,18 @@ export default async function CategoryPage() {
                 </Link>
               </li>
             ))}
+            {item.books?.length === 10 && (
+              <li>
+                <Link
+                  href={`/category/${item.id}`}
+                  className="text-primary hover:underline">
+                  查看全部...
+                </Link>
+              </li>
+            )}
+            {!item.books?.length && (
+              <li className="text-primary">...暂无...</li>
+            )}
           </ul>
         </section>
       ))}

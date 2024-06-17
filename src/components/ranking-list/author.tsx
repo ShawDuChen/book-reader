@@ -1,15 +1,19 @@
 import { fetchAuthorHot } from "@/api/author";
+import { RankListProps } from "app";
 import Link from "next/link";
-import { HTMLAttributes } from "react";
 
 export default async function AuthorRankingList({
   className,
-}: HTMLAttributes<HTMLDivElement>) {
-  const data = await fetchAuthorHot();
+  limit,
+  layout = "vertical",
+}: RankListProps) {
+  const data = await fetchAuthorHot(limit);
   return (
-    <section className={className}>
+    <section
+      className={`${layout === "vertical" ? "block" : "flex flex-wrap gap-x-4"} ${className}`}>
       <h2>作者排行榜</h2>
-      <ul>
+      <ul
+        className={`${layout === "vertical" ? "block" : "flex flex-wrap gap-x-4"}`}>
         {data?.map((item) => (
           <li key={item.id}>
             <Link

@@ -25,6 +25,18 @@ export default async function AuthorPage() {
                 </Link>
               </li>
             ))}
+            {item.books?.length === 10 && (
+              <li>
+                <Link
+                  href={`/author/${item.id}`}
+                  className="text-primary hover:underline">
+                  查看全部...
+                </Link>
+              </li>
+            )}
+            {!item.books?.length && (
+              <li className="text-primary">...暂无...</li>
+            )}
           </ul>
         </section>
       ))}

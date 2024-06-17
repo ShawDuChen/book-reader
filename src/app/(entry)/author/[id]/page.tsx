@@ -10,6 +10,7 @@ export default async function AuthorDetailPage({
   return (
     <section>
       <h1>{data.name}</h1>
+      <h2>{data.description}</h2>
       <ul className="pl-12">
         {data.books?.map((item) => (
           <li key={item.id}>

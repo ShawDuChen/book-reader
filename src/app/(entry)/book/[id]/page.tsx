@@ -11,7 +11,7 @@ export default async function BookDetailPage({
 
   return (
     <section>
-      <h1 className="text-2xl font-bold text-primary">{book.name}</h1>
+      <h1 className="text-2xl font-bold text-primary space-y-4">{book.name}</h1>
       <h2>
         <Link
           href={`/book/${book.author_id}`}

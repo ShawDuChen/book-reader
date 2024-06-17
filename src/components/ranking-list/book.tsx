@@ -1,16 +1,20 @@
 import { fetchBookHot } from "@/api/book";
+import { RankListProps } from "app";
 import Link from "next/link";
-import { HTMLAttributes } from "react";
 
 export default async function BookRankingList({
+  limit,
   className,
-}: HTMLAttributes<HTMLDivElement>) {
-  const data = await fetchBookHot();
+  layout = "vertical",
+}: RankListProps) {
+  const data = await fetchBookHot(limit);
 
   return (
-    <section className={className}>
+    <section
+      className={`${layout === "vertical" ? "block" : "flex flex-wrap gap-x-4"} ${className}`}>
       <h2>书籍排行榜</h2>
-      <ul>
+      <ul
+        className={`${layout === "vertical" ? "block" : "flex flex-wrap gap-x-4"}`}>
         {data?.map((item) => (
           <li key={item.id}>
             <Link

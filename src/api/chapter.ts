@@ -5,8 +5,8 @@ export const fetchChapter = async () => {
   return fetchServer<Chapter[] | undefined>("/api/chapter");
 };
 
-export const fetchChapterHot = async () => {
-  return fetchServer<Chapter[] | undefined>("/api/chapter/hot");
+export const fetchChapterHot = async (limit = 20) => {
+  return fetchServer<Chapter[] | undefined>("/api/chapter/hot?limit=" + limit);
 };
 
 export const fetchChapterInfo = async (id: string) => {

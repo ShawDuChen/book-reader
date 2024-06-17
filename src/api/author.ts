@@ -5,8 +5,8 @@ export const fetchAuthor = async () => {
   return fetchServer<Author[] | undefined>("/api/author/");
 };
 
-export const fetchAuthorHot = async () => {
-  return fetchServer<Author[] | undefined>("/api/author/hot");
+export const fetchAuthorHot = async (limit = 20) => {
+  return fetchServer<Author[] | undefined>("/api/author/hot?limit=" + limit);
 };
 
 export const fetchAuthorInfo = async (id: string) => {
