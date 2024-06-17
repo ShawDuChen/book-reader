@@ -1,13 +1,16 @@
 import { fetchCategoryHot } from "@/api/category";
 import Link from "next/link";
+import { HTMLAttributes } from "react";
 
-export default async function CategoryRankingList() {
+export default async function CategoryRankingList({
+  className,
+}: HTMLAttributes<HTMLDivElement>) {
   const data = await fetchCategoryHot();
 
   return (
-    <section>
+    <section className={className}>
       <h2>分类排行榜</h2>
-      <ul className="pl-6">
+      <ul>
         {data?.map((item) => (
           <li key={item.id}>
             <Link

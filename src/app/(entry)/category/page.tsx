@@ -4,12 +4,10 @@ import Link from "next/link";
 export default async function CategoryPage() {
   const data = await fetchCategory();
 
-  console.log(data);
-
   return (
-    <section>
+    <section className="sm:flex flex-wrap sm:gap-y-8">
       {data?.map((item) => (
-        <section key={item.id}>
+        <section key={item.id} className="lg:w-1/4 md:w-1/3 sm:w-1/2 w-full">
           <h1>
             <Link
               href={`/category/${item.id}`}

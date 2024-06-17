@@ -1,12 +1,15 @@
 import { fetchAuthorHot } from "@/api/author";
 import Link from "next/link";
+import { HTMLAttributes } from "react";
 
-export default async function AuthorRankingList() {
+export default async function AuthorRankingList({
+  className,
+}: HTMLAttributes<HTMLDivElement>) {
   const data = await fetchAuthorHot();
   return (
-    <section>
+    <section className={className}>
       <h2>作者排行榜</h2>
-      <ul className="pl-6">
+      <ul>
         {data?.map((item) => (
           <li key={item.id}>
             <Link

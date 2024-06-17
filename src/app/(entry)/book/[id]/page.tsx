@@ -12,7 +12,13 @@ export default async function BookDetailPage({
   return (
     <section>
       <h1 className="text-2xl font-bold text-primary">{book.name}</h1>
-      <h2>{book.author?.name}</h2>
+      <h2>
+        <Link
+          href={`/book/${book.author_id}`}
+          className="text-primary hover:underline">
+          {book.author?.name}
+        </Link>
+      </h2>
       <p>
         {book.fetch_url ? (
           <Link

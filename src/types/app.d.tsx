@@ -59,5 +59,24 @@ declare module "app" {
     book_id?: number;
     book?: Book;
     url?: string;
+    prev_chapter_id?: number;
+    next_chapter_id?: number;
+  }
+
+  interface Advertiser extends CommonStruct {
+    name: string;
+    tel: string;
+    address: string;
+  }
+
+  interface Ads extends CommonStruct {
+    title: string;
+    link: string;
+    image?: string;
+    description?: string;
+    advertiser_id: number;
+    advertiser?: Advertiser;
+    expired_at: string;
+    status: 0 | 1;
   }
 }

@@ -1,12 +1,15 @@
 import { fetchChapterHot } from "@/api/chapter";
 import Link from "next/link";
+import { HTMLAttributes } from "react";
 
-export default async function ChapterRankingList() {
+export default async function ChapterRankingList({
+  className,
+}: HTMLAttributes<HTMLDivElement>) {
   const data = await fetchChapterHot();
   return (
-    <section>
+    <section className={className}>
       <h2>章节排行榜</h2>
-      <ul className="pl-6">
+      <ul>
         {data?.map((item) => (
           <li key={item.id}>
             <Link
